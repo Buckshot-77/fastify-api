@@ -4,6 +4,8 @@ import { z } from 'zod'
 
 const envSchema = z.object({
     PORT: z.number({ coerce: true }).positive(),
+    DATABASE_URL: z.string(),
+    MIGRATION_PATH: z.string(),
 })
 
 const parsedEnv = envSchema.safeParse(process.env)

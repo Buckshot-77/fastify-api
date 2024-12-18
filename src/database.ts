@@ -1,14 +1,16 @@
 import { Knex, knex as setupKnex } from 'knex'
 
+import { parsedEnv } from './utils/env'
+
 const knexConfig: Knex.Config = {
     client: 'sqlite',
     connection: {
-        filename: './db/app.db',
+        filename: parsedEnv.DATABASE_URL,
     },
     useNullAsDefault: true,
     migrations: {
         extension: 'ts',
-        directory: './db/migrations',
+        directory: parsedEnv.MIGRATION_PATH,
     },
 }
 
